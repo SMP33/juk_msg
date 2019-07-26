@@ -59,10 +59,9 @@ struct juk_control_dji_msg_
 
 
   enum {
-    FLAG_VELOCITY = 1u,
-    FLAG_ANGLES = 2u,
-    FLAG_BREAK = 3u,
-    FLAB_NOTHING = 4u,
+    flag_velocity = 5u,
+    flag_angles = 2u,
+    flag_break = 13u,
   };
 
 
@@ -77,8 +76,6 @@ typedef boost::shared_ptr< ::juk_msg::juk_control_dji_msg > juk_control_dji_msgP
 typedef boost::shared_ptr< ::juk_msg::juk_control_dji_msg const> juk_control_dji_msgConstPtr;
 
 // constants requiring out of line definition
-
-   
 
    
 
@@ -148,12 +145,12 @@ struct MD5Sum< ::juk_msg::juk_control_dji_msg_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "abe0ee84b4a03285cfba0c7476d4adad";
+    return "2d5b918a83dd8bc62e562f57e48e333b";
   }
 
   static const char* value(const ::juk_msg::juk_control_dji_msg_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0xabe0ee84b4a03285ULL;
-  static const uint64_t static_value2 = 0xcfba0c7476d4adadULL;
+  static const uint64_t static_value1 = 0x2d5b918a83dd8bc6ULL;
+  static const uint64_t static_value2 = 0x2e562f57e48e333bULL;
 };
 
 template<class ContainerAllocator>
@@ -172,10 +169,9 @@ struct Definition< ::juk_msg::juk_control_dji_msg_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "uint8 FLAG_VELOCITY = 1\n"
-"uint8 FLAG_ANGLES = 2\n"
-"uint8 FLAG_BREAK = 3\n"
-"uint8 FLAB_NOTHING = 4\n"
+    return "uint8 flag_velocity = 5\n"
+"uint8 flag_angles = 2\n"
+"uint8 flag_break = 13\n"
 "\n"
 "uint8 flag\n"
 "float32 data_x\n"

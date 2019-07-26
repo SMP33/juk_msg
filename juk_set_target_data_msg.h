@@ -25,18 +25,20 @@ struct juk_set_target_data_msg_
 
   juk_set_target_data_msg_()
     : system(0)
-    , break_distance(0)
+    , break_distance_mode(0)
     , data_x(0.0)
     , data_y(0.0)
     , data_z(0.0)
+    , speed(0.0)
     , acc(0.0)  {
     }
   juk_set_target_data_msg_(const ContainerAllocator& _alloc)
     : system(0)
-    , break_distance(0)
+    , break_distance_mode(0)
     , data_x(0.0)
     , data_y(0.0)
     , data_z(0.0)
+    , speed(0.0)
     , acc(0.0)  {
   (void)_alloc;
     }
@@ -46,8 +48,8 @@ struct juk_set_target_data_msg_
    typedef uint8_t _system_type;
   _system_type system;
 
-   typedef uint8_t _break_distance_type;
-  _break_distance_type break_distance;
+   typedef uint8_t _break_distance_mode_type;
+  _break_distance_mode_type break_distance_mode;
 
    typedef float _data_x_type;
   _data_x_type data_x;
@@ -58,6 +60,9 @@ struct juk_set_target_data_msg_
    typedef float _data_z_type;
   _data_z_type data_z;
 
+   typedef float _speed_type;
+  _speed_type speed;
+
    typedef float _acc_type;
   _acc_type acc;
 
@@ -67,9 +72,9 @@ struct juk_set_target_data_msg_
     system_absolut = 1u,
     system_home = 2u,
     system_base = 3u,
-    system_offset = 4u,
-    mode_allow_break_distance = 1u,
-    mode_not_break_distance = 2u,
+    system_offset_from_target = 4u,
+    mode_allow_break_distance = 0u,
+    mode_not_break_distance = 1u,
   };
 
 
@@ -159,12 +164,12 @@ struct MD5Sum< ::juk_msg::juk_set_target_data_msg_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "f91a12c8b71530e28effa7929665017f";
+    return "22040df1170938e3608c616bc77c347c";
   }
 
   static const char* value(const ::juk_msg::juk_set_target_data_msg_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0xf91a12c8b71530e2ULL;
-  static const uint64_t static_value2 = 0x8effa7929665017fULL;
+  static const uint64_t static_value1 = 0x22040df1170938e3ULL;
+  static const uint64_t static_value2 = 0x608c616bc77c347cULL;
 };
 
 template<class ContainerAllocator>
@@ -186,18 +191,20 @@ struct Definition< ::juk_msg::juk_set_target_data_msg_<ContainerAllocator> >
     return "uint8 system_absolut = 1\n"
 "uint8 system_home = 2\n"
 "uint8 system_base = 3\n"
-"uint8 system_offset = 4\n"
+"uint8 system_offset_from_target  = 4\n"
 "\n"
-"uint8 mode_allow_break_distance = 1\n"
-"uint8 mode_not_break_distance = 2\n"
+"uint8 mode_allow_break_distance = 0\n"
+"uint8 mode_not_break_distance = 1\n"
 "\n"
 "\n"
 "uint8 system\n"
-"uint8 break_distance\n"
+"uint8 break_distance_mode\n"
 "\n"
 "float32 data_x\n"
 "float32 data_y\n"
 "float32 data_z\n"
+"\n"
+"float32 speed\n"
 "\n"
 "float32 acc\n"
 ;
@@ -219,10 +226,11 @@ namespace serialization
     template<typename Stream, typename T> inline static void allInOne(Stream& stream, T m)
     {
       stream.next(m.system);
-      stream.next(m.break_distance);
+      stream.next(m.break_distance_mode);
       stream.next(m.data_x);
       stream.next(m.data_y);
       stream.next(m.data_z);
+      stream.next(m.speed);
       stream.next(m.acc);
     }
 
@@ -244,14 +252,16 @@ struct Printer< ::juk_msg::juk_set_target_data_msg_<ContainerAllocator> >
   {
     s << indent << "system: ";
     Printer<uint8_t>::stream(s, indent + "  ", v.system);
-    s << indent << "break_distance: ";
-    Printer<uint8_t>::stream(s, indent + "  ", v.break_distance);
+    s << indent << "break_distance_mode: ";
+    Printer<uint8_t>::stream(s, indent + "  ", v.break_distance_mode);
     s << indent << "data_x: ";
     Printer<float>::stream(s, indent + "  ", v.data_x);
     s << indent << "data_y: ";
     Printer<float>::stream(s, indent + "  ", v.data_y);
     s << indent << "data_z: ";
     Printer<float>::stream(s, indent + "  ", v.data_z);
+    s << indent << "speed: ";
+    Printer<float>::stream(s, indent + "  ", v.speed);
     s << indent << "acc: ";
     Printer<float>::stream(s, indent + "  ", v.acc);
   }
