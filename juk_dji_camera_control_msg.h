@@ -24,28 +24,28 @@ struct juk_dji_camera_control_msg_
   typedef juk_dji_camera_control_msg_<ContainerAllocator> Type;
 
   juk_dji_camera_control_msg_()
-    : yaw(0.0)
-    , pitch(0.0)
-    , roll(0.0)
+    : yaw(0)
+    , pitch(0)
+    , roll(0)
     , action(0)  {
     }
   juk_dji_camera_control_msg_(const ContainerAllocator& _alloc)
-    : yaw(0.0)
-    , pitch(0.0)
-    , roll(0.0)
+    : yaw(0)
+    , pitch(0)
+    , roll(0)
     , action(0)  {
   (void)_alloc;
     }
 
 
 
-   typedef float _yaw_type;
+   typedef int16_t _yaw_type;
   _yaw_type yaw;
 
-   typedef float _pitch_type;
+   typedef int16_t _pitch_type;
   _pitch_type pitch;
 
-   typedef float _roll_type;
+   typedef int16_t _roll_type;
   _roll_type roll;
 
    typedef uint8_t _action_type;
@@ -140,12 +140,12 @@ struct MD5Sum< ::juk_msg::juk_dji_camera_control_msg_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "9adfef10fcb73abcc80106b08d2d37a2";
+    return "c007578b4ce5a26db08d18185f07a628";
   }
 
   static const char* value(const ::juk_msg::juk_dji_camera_control_msg_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0x9adfef10fcb73abcULL;
-  static const uint64_t static_value2 = 0xc80106b08d2d37a2ULL;
+  static const uint64_t static_value1 = 0xc007578b4ce5a26dULL;
+  static const uint64_t static_value2 = 0xb08d18185f07a628ULL;
 };
 
 template<class ContainerAllocator>
@@ -168,9 +168,10 @@ struct Definition< ::juk_msg::juk_dji_camera_control_msg_<ContainerAllocator> >
 "uint8 start_video=2\n"
 "uint8 stop_video=3\n"
 "\n"
-"float32 yaw		#deg * 0.1\n"
-"float32 pitch	#deg * 0.1\n"
-"float32 roll	#deg * 0.1\n"
+"int16 yaw      #deg * 0.1\n"
+"int16 pitch    #deg * 0.1\n"
+"int16 roll       #deg * 0.1\n"
+"\n"
 "uint8 action\n"
 ;
   }
@@ -213,11 +214,11 @@ struct Printer< ::juk_msg::juk_dji_camera_control_msg_<ContainerAllocator> >
   template<typename Stream> static void stream(Stream& s, const std::string& indent, const ::juk_msg::juk_dji_camera_control_msg_<ContainerAllocator>& v)
   {
     s << indent << "yaw: ";
-    Printer<float>::stream(s, indent + "  ", v.yaw);
+    Printer<int16_t>::stream(s, indent + "  ", v.yaw);
     s << indent << "pitch: ";
-    Printer<float>::stream(s, indent + "  ", v.pitch);
+    Printer<int16_t>::stream(s, indent + "  ", v.pitch);
     s << indent << "roll: ";
-    Printer<float>::stream(s, indent + "  ", v.roll);
+    Printer<int16_t>::stream(s, indent + "  ", v.roll);
     s << indent << "action: ";
     Printer<uint8_t>::stream(s, indent + "  ", v.action);
   }
