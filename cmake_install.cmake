@@ -40,6 +40,7 @@ endif()
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/juk_msg" TYPE FILE FILES
     "/home/ubuntu/catkin_ws/devel/include/juk_msg/juk_control_dji_msg.h"
+    "/home/ubuntu/catkin_ws/devel/include/juk_msg/juk_dji_camera_control_msg.h"
     "/home/ubuntu/catkin_ws/devel/include/juk_msg/juk_dji_device_status_msg.h"
     "/home/ubuntu/catkin_ws/devel/include/juk_msg/juk_dji_gps_msg.h"
     "/home/ubuntu/catkin_ws/devel/include/juk_msg/juk_position_data_msg.h"

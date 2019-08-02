@@ -1,6 +1,7 @@
 install( FILES 
 
 juk_control_dji_msg.h
+juk_dji_camera_control_msg.h
 juk_dji_device_status_msg.h
 juk_dji_gps_msg.h
 juk_position_data_msg.h
