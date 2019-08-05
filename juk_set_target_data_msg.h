@@ -30,6 +30,7 @@ struct juk_set_target_data_msg_
     , data_y(0.0)
     , data_z(0.0)
     , speed(0.0)
+    , course(0.0)
     , acc(0.0)  {
     }
   juk_set_target_data_msg_(const ContainerAllocator& _alloc)
@@ -39,6 +40,7 @@ struct juk_set_target_data_msg_
     , data_y(0.0)
     , data_z(0.0)
     , speed(0.0)
+    , course(0.0)
     , acc(0.0)  {
   (void)_alloc;
     }
@@ -62,6 +64,9 @@ struct juk_set_target_data_msg_
 
    typedef float _speed_type;
   _speed_type speed;
+
+   typedef float _course_type;
+  _course_type course;
 
    typedef float _acc_type;
   _acc_type acc;
@@ -164,12 +169,12 @@ struct MD5Sum< ::juk_msg::juk_set_target_data_msg_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "22040df1170938e3608c616bc77c347c";
+    return "cb5cc991f10ccb33d43f4586fa1a3c4d";
   }
 
   static const char* value(const ::juk_msg::juk_set_target_data_msg_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0x22040df1170938e3ULL;
-  static const uint64_t static_value2 = 0x608c616bc77c347cULL;
+  static const uint64_t static_value1 = 0xcb5cc991f10ccb33ULL;
+  static const uint64_t static_value2 = 0xd43f4586fa1a3c4dULL;
 };
 
 template<class ContainerAllocator>
@@ -206,6 +211,8 @@ struct Definition< ::juk_msg::juk_set_target_data_msg_<ContainerAllocator> >
 "\n"
 "float32 speed\n"
 "\n"
+"float32 course\n"
+"\n"
 "float32 acc\n"
 ;
   }
@@ -231,6 +238,7 @@ namespace serialization
       stream.next(m.data_y);
       stream.next(m.data_z);
       stream.next(m.speed);
+      stream.next(m.course);
       stream.next(m.acc);
     }
 
@@ -262,6 +270,8 @@ struct Printer< ::juk_msg::juk_set_target_data_msg_<ContainerAllocator> >
     Printer<float>::stream(s, indent + "  ", v.data_z);
     s << indent << "speed: ";
     Printer<float>::stream(s, indent + "  ", v.speed);
+    s << indent << "course: ";
+    Printer<float>::stream(s, indent + "  ", v.course);
     s << indent << "acc: ";
     Printer<float>::stream(s, indent + "  ", v.acc);
   }
