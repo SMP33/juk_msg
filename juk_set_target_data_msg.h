@@ -53,22 +53,22 @@ struct juk_set_target_data_msg_
    typedef uint8_t _break_distance_mode_type;
   _break_distance_mode_type break_distance_mode;
 
-   typedef float _data_x_type;
+   typedef double _data_x_type;
   _data_x_type data_x;
 
-   typedef float _data_y_type;
+   typedef double _data_y_type;
   _data_y_type data_y;
 
-   typedef float _data_z_type;
+   typedef double _data_z_type;
   _data_z_type data_z;
 
-   typedef float _speed_type;
+   typedef double _speed_type;
   _speed_type speed;
 
-   typedef float _course_type;
+   typedef double _course_type;
   _course_type course;
 
-   typedef float _acc_type;
+   typedef double _acc_type;
   _acc_type acc;
 
 
@@ -205,15 +205,15 @@ struct Definition< ::juk_msg::juk_set_target_data_msg_<ContainerAllocator> >
 "uint8 system\n"
 "uint8 break_distance_mode\n"
 "\n"
-"float32 data_x\n"
-"float32 data_y\n"
-"float32 data_z\n"
+"float64 data_x\n"
+"float64 data_y\n"
+"float64 data_z\n"
 "\n"
-"float32 speed\n"
+"float64 speed\n"
 "\n"
-"float32 course\n"
+"float64 course\n"
 "\n"
-"float32 acc\n"
+"float64 acc\n"
 ;
   }
 
@@ -263,17 +263,17 @@ struct Printer< ::juk_msg::juk_set_target_data_msg_<ContainerAllocator> >
     s << indent << "break_distance_mode: ";
     Printer<uint8_t>::stream(s, indent + "  ", v.break_distance_mode);
     s << indent << "data_x: ";
-    Printer<float>::stream(s, indent + "  ", v.data_x);
+    Printer<double>::stream(s, indent + "  ", v.data_x);
     s << indent << "data_y: ";
-    Printer<float>::stream(s, indent + "  ", v.data_y);
+    Printer<double>::stream(s, indent + "  ", v.data_y);
     s << indent << "data_z: ";
-    Printer<float>::stream(s, indent + "  ", v.data_z);
+    Printer<double>::stream(s, indent + "  ", v.data_z);
     s << indent << "speed: ";
-    Printer<float>::stream(s, indent + "  ", v.speed);
+    Printer<double>::stream(s, indent + "  ", v.speed);
     s << indent << "course: ";
-    Printer<float>::stream(s, indent + "  ", v.course);
+    Printer<double>::stream(s, indent + "  ", v.course);
     s << indent << "acc: ";
-    Printer<float>::stream(s, indent + "  ", v.acc);
+    Printer<double>::stream(s, indent + "  ", v.acc);
   }
 };
 

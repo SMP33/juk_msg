@@ -51,25 +51,25 @@ struct juk_dji_gps_msg_
 
 
 
-   typedef float _lat_type;
+   typedef double _lat_type;
   _lat_type lat;
 
-   typedef float _lng_type;
+   typedef double _lng_type;
   _lng_type lng;
 
-   typedef float _alt_type;
+   typedef double _alt_type;
   _alt_type alt;
 
-   typedef float _vx_type;
+   typedef double _vx_type;
   _vx_type vx;
 
-   typedef float _vy_type;
+   typedef double _vy_type;
   _vy_type vy;
 
-   typedef float _vz_type;
+   typedef double _vz_type;
   _vz_type vz;
 
-   typedef float _course_type;
+   typedef double _course_type;
   _course_type course;
 
    typedef uint8_t _satellites_type;
@@ -183,13 +183,13 @@ struct Definition< ::juk_msg::juk_dji_gps_msg_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "float32 lat	#rads\n"
-"float32 lng	#rads\n"
-"float32 alt	#meters\n"
-"float32 vx	#meters/sec\n"
-"float32 vy	#meters/sec\n"
-"float32 vz	#meters/sec\n"
-"float32 course   #rads\n"
+    return "float64 lat	#rads\n"
+"float64 lng	#rads\n"
+"float64 alt	#meters\n"
+"float64 vx	#meters/sec\n"
+"float64 vy	#meters/sec\n"
+"float64 vz	#meters/sec\n"
+"float64 course   #rads\n"
 "uint8 satellites\n"
 "uint8 quality\n"
 "time time\n"
@@ -240,19 +240,19 @@ struct Printer< ::juk_msg::juk_dji_gps_msg_<ContainerAllocator> >
   template<typename Stream> static void stream(Stream& s, const std::string& indent, const ::juk_msg::juk_dji_gps_msg_<ContainerAllocator>& v)
   {
     s << indent << "lat: ";
-    Printer<float>::stream(s, indent + "  ", v.lat);
+    Printer<double>::stream(s, indent + "  ", v.lat);
     s << indent << "lng: ";
-    Printer<float>::stream(s, indent + "  ", v.lng);
+    Printer<double>::stream(s, indent + "  ", v.lng);
     s << indent << "alt: ";
-    Printer<float>::stream(s, indent + "  ", v.alt);
+    Printer<double>::stream(s, indent + "  ", v.alt);
     s << indent << "vx: ";
-    Printer<float>::stream(s, indent + "  ", v.vx);
+    Printer<double>::stream(s, indent + "  ", v.vx);
     s << indent << "vy: ";
-    Printer<float>::stream(s, indent + "  ", v.vy);
+    Printer<double>::stream(s, indent + "  ", v.vy);
     s << indent << "vz: ";
-    Printer<float>::stream(s, indent + "  ", v.vz);
+    Printer<double>::stream(s, indent + "  ", v.vz);
     s << indent << "course: ";
-    Printer<float>::stream(s, indent + "  ", v.course);
+    Printer<double>::stream(s, indent + "  ", v.course);
     s << indent << "satellites: ";
     Printer<uint8_t>::stream(s, indent + "  ", v.satellites);
     s << indent << "quality: ";

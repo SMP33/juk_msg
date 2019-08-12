@@ -49,31 +49,31 @@ struct juk_position_data_msg_
 
 
 
-   typedef float _lat_type;
+   typedef double _lat_type;
   _lat_type lat;
 
-   typedef float _lng_type;
+   typedef double _lng_type;
   _lng_type lng;
 
-   typedef float _alt_type;
+   typedef double _alt_type;
   _alt_type alt;
 
-   typedef float _x_type;
+   typedef double _x_type;
   _x_type x;
 
-   typedef float _y_type;
+   typedef double _y_type;
   _y_type y;
 
-   typedef float _z_type;
+   typedef double _z_type;
   _z_type z;
 
-   typedef float _course_type;
+   typedef double _course_type;
   _course_type course;
 
-   typedef float _dist_to_target_type;
+   typedef double _dist_to_target_type;
   _dist_to_target_type dist_to_target;
 
-   typedef float _stable_time_type;
+   typedef double _stable_time_type;
   _stable_time_type stable_time;
 
 
@@ -178,15 +178,15 @@ struct Definition< ::juk_msg::juk_position_data_msg_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "float32 lat\n"
-"float32 lng\n"
-"float32 alt\n"
-"float32 x\n"
-"float32 y\n"
-"float32 z\n"
-"float32 course\n"
-"float32 dist_to_target\n"
-"float32 stable_time\n"
+    return "float64 lat\n"
+"float64 lng\n"
+"float64 alt\n"
+"float64 x\n"
+"float64 y\n"
+"float64 z\n"
+"float64 course\n"
+"float64 dist_to_target\n"
+"float64 stable_time\n"
 ;
   }
 
@@ -233,23 +233,23 @@ struct Printer< ::juk_msg::juk_position_data_msg_<ContainerAllocator> >
   template<typename Stream> static void stream(Stream& s, const std::string& indent, const ::juk_msg::juk_position_data_msg_<ContainerAllocator>& v)
   {
     s << indent << "lat: ";
-    Printer<float>::stream(s, indent + "  ", v.lat);
+    Printer<double>::stream(s, indent + "  ", v.lat);
     s << indent << "lng: ";
-    Printer<float>::stream(s, indent + "  ", v.lng);
+    Printer<double>::stream(s, indent + "  ", v.lng);
     s << indent << "alt: ";
-    Printer<float>::stream(s, indent + "  ", v.alt);
+    Printer<double>::stream(s, indent + "  ", v.alt);
     s << indent << "x: ";
-    Printer<float>::stream(s, indent + "  ", v.x);
+    Printer<double>::stream(s, indent + "  ", v.x);
     s << indent << "y: ";
-    Printer<float>::stream(s, indent + "  ", v.y);
+    Printer<double>::stream(s, indent + "  ", v.y);
     s << indent << "z: ";
-    Printer<float>::stream(s, indent + "  ", v.z);
+    Printer<double>::stream(s, indent + "  ", v.z);
     s << indent << "course: ";
-    Printer<float>::stream(s, indent + "  ", v.course);
+    Printer<double>::stream(s, indent + "  ", v.course);
     s << indent << "dist_to_target: ";
-    Printer<float>::stream(s, indent + "  ", v.dist_to_target);
+    Printer<double>::stream(s, indent + "  ", v.dist_to_target);
     s << indent << "stable_time: ";
-    Printer<float>::stream(s, indent + "  ", v.stable_time);
+    Printer<double>::stream(s, indent + "  ", v.stable_time);
   }
 };
 

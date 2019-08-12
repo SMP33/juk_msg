@@ -44,16 +44,16 @@ struct juk_control_dji_msg_
    typedef uint8_t _flag_type;
   _flag_type flag;
 
-   typedef float _data_x_type;
+   typedef double _data_x_type;
   _data_x_type data_x;
 
-   typedef float _data_y_type;
+   typedef double _data_y_type;
   _data_y_type data_y;
 
-   typedef float _data_z_type;
+   typedef double _data_z_type;
   _data_z_type data_z;
 
-   typedef float _course_type;
+   typedef double _course_type;
   _course_type course;
 
 
@@ -174,10 +174,10 @@ struct Definition< ::juk_msg::juk_control_dji_msg_<ContainerAllocator> >
 "uint8 flag_break = 13\n"
 "\n"
 "uint8 flag\n"
-"float32 data_x\n"
-"float32 data_y\n"
-"float32 data_z\n"
-"float32 course\n"
+"float64 data_x\n"
+"float64 data_y\n"
+"float64 data_z\n"
+"float64 course\n"
 ;
   }
 
@@ -222,13 +222,13 @@ struct Printer< ::juk_msg::juk_control_dji_msg_<ContainerAllocator> >
     s << indent << "flag: ";
     Printer<uint8_t>::stream(s, indent + "  ", v.flag);
     s << indent << "data_x: ";
-    Printer<float>::stream(s, indent + "  ", v.data_x);
+    Printer<double>::stream(s, indent + "  ", v.data_x);
     s << indent << "data_y: ";
-    Printer<float>::stream(s, indent + "  ", v.data_y);
+    Printer<double>::stream(s, indent + "  ", v.data_y);
     s << indent << "data_z: ";
-    Printer<float>::stream(s, indent + "  ", v.data_z);
+    Printer<double>::stream(s, indent + "  ", v.data_z);
     s << indent << "course: ";
-    Printer<float>::stream(s, indent + "  ", v.course);
+    Printer<double>::stream(s, indent + "  ", v.course);
   }
 };
 
