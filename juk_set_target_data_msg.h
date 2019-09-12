@@ -24,7 +24,8 @@ struct juk_set_target_data_msg_
   typedef juk_set_target_data_msg_<ContainerAllocator> Type;
 
   juk_set_target_data_msg_()
-    : system(0)
+    : fly_mode(0)
+    , system(0)
     , break_distance_mode(0)
     , data_x(0.0)
     , data_y(0.0)
@@ -34,7 +35,8 @@ struct juk_set_target_data_msg_
     , acc(0.0)  {
     }
   juk_set_target_data_msg_(const ContainerAllocator& _alloc)
-    : system(0)
+    : fly_mode(0)
+    , system(0)
     , break_distance_mode(0)
     , data_x(0.0)
     , data_y(0.0)
@@ -46,6 +48,9 @@ struct juk_set_target_data_msg_
     }
 
 
+
+   typedef uint8_t _fly_mode_type;
+  _fly_mode_type fly_mode;
 
    typedef uint8_t _system_type;
   _system_type system;
@@ -80,6 +85,10 @@ struct juk_set_target_data_msg_
     system_offset_from_target = 4u,
     mode_allow_break_distance = 0u,
     mode_not_break_distance = 1u,
+    fly_simple = 1u,
+    fly_safe = 1u,
+    landing_simple = 1u,
+    landing_aruco = 1u,
   };
 
 
@@ -94,6 +103,14 @@ typedef boost::shared_ptr< ::juk_msg::juk_set_target_data_msg > juk_set_target_d
 typedef boost::shared_ptr< ::juk_msg::juk_set_target_data_msg const> juk_set_target_data_msgConstPtr;
 
 // constants requiring out of line definition
+
+   
+
+   
+
+   
+
+   
 
    
 
@@ -126,7 +143,7 @@ namespace message_traits
 
 
 // BOOLTRAITS {'IsFixedSize': True, 'IsMessage': True, 'HasHeader': False}
-// {'juk_msg': ['/home/ubuntu/catkin_ws/src/juk-msg/msg'], 'std_msgs': ['/opt/ros/melodic/share/std_msgs/cmake/../msg']}
+// {'juk_msg': ['/home/pi/catkin_ws/src/juk_msg/msg'], 'std_msgs': ['/opt/ros/kinetic/share/std_msgs/cmake/../msg']}
 
 // !!!!!!!!!!! ['__class__', '__delattr__', '__dict__', '__doc__', '__eq__', '__format__', '__getattribute__', '__hash__', '__init__', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', '_parsed_fields', 'constants', 'fields', 'full_name', 'has_header', 'header_present', 'names', 'package', 'parsed_fields', 'short_name', 'text', 'types']
 
@@ -169,12 +186,12 @@ struct MD5Sum< ::juk_msg::juk_set_target_data_msg_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "cb5cc991f10ccb33d43f4586fa1a3c4d";
+    return "8b1c0f84f288b0ee8306c344df24bef2";
   }
 
   static const char* value(const ::juk_msg::juk_set_target_data_msg_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0xcb5cc991f10ccb33ULL;
-  static const uint64_t static_value2 = 0xd43f4586fa1a3c4dULL;
+  static const uint64_t static_value1 = 0x8b1c0f84f288b0eeULL;
+  static const uint64_t static_value2 = 0x8306c344df24bef2ULL;
 };
 
 template<class ContainerAllocator>
@@ -193,28 +210,34 @@ struct Definition< ::juk_msg::juk_set_target_data_msg_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "uint8 system_absolut = 1\n"
-"uint8 system_home = 2\n"
-"uint8 system_base = 3\n"
-"uint8 system_offset_from_target  = 4\n"
-"\n"
-"uint8 mode_allow_break_distance = 0\n"
-"uint8 mode_not_break_distance = 1\n"
-"\n"
-"\n"
-"uint8 system\n"
-"uint8 break_distance_mode\n"
-"\n"
-"float64 data_x\n"
-"float64 data_y\n"
-"float64 data_z\n"
-"\n"
-"float64 speed\n"
-"\n"
-"float64 course\n"
-"\n"
-"float64 acc\n"
-;
+    return "uint8 system_absolut = 1\n\
+uint8 system_home = 2\n\
+uint8 system_base = 3\n\
+uint8 system_offset_from_target  = 4\n\
+\n\
+uint8 mode_allow_break_distance = 0\n\
+uint8 mode_not_break_distance = 1\n\
+\n\
+uint8 fly_simple=1\n\
+uint8 fly_safe=1\n\
+uint8 landing_simple=1\n\
+uint8 landing_aruco=1\n\
+\n\
+uint8 fly_mode\n\
+\n\
+uint8 system\n\
+uint8 break_distance_mode\n\
+\n\
+float64 data_x\n\
+float64 data_y\n\
+float64 data_z\n\
+\n\
+float64 speed\n\
+\n\
+float64 course\n\
+\n\
+float64 acc\n\
+";
   }
 
   static const char* value(const ::juk_msg::juk_set_target_data_msg_<ContainerAllocator>&) { return value(); }
@@ -232,6 +255,7 @@ namespace serialization
   {
     template<typename Stream, typename T> inline static void allInOne(Stream& stream, T m)
     {
+      stream.next(m.fly_mode);
       stream.next(m.system);
       stream.next(m.break_distance_mode);
       stream.next(m.data_x);
@@ -258,6 +282,8 @@ struct Printer< ::juk_msg::juk_set_target_data_msg_<ContainerAllocator> >
 {
   template<typename Stream> static void stream(Stream& s, const std::string& indent, const ::juk_msg::juk_set_target_data_msg_<ContainerAllocator>& v)
   {
+    s << indent << "fly_mode: ";
+    Printer<uint8_t>::stream(s, indent + "  ", v.fly_mode);
     s << indent << "system: ";
     Printer<uint8_t>::stream(s, indent + "  ", v.system);
     s << indent << "break_distance_mode: ";
