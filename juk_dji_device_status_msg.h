@@ -118,7 +118,7 @@ namespace message_traits
 
 
 // BOOLTRAITS {'IsFixedSize': True, 'IsMessage': True, 'HasHeader': False}
-// {'juk_msg': ['/home/ubuntu/catkin_ws/src/juk-msg/msg'], 'std_msgs': ['/opt/ros/melodic/share/std_msgs/cmake/../msg']}
+// {'juk_msg': ['/home/pi/catkin_ws/src/juk_msg/msg'], 'std_msgs': ['/opt/ros/kinetic/share/std_msgs/cmake/../msg']}
 
 // !!!!!!!!!!! ['__class__', '__delattr__', '__dict__', '__doc__', '__eq__', '__format__', '__getattribute__', '__hash__', '__init__', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', '_parsed_fields', 'constants', 'fields', 'full_name', 'has_header', 'header_present', 'names', 'package', 'parsed_fields', 'short_name', 'text', 'types']
 
@@ -185,23 +185,22 @@ struct Definition< ::juk_msg::juk_dji_device_status_msg_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "# authority constants\n"
-"uint8 CONTROL_BY_RC = 1\n"
-"uint8 CONTROL_BY_MOBILE = 2\n"
-"uint8 CONTROL_BY_SDK = 3\n"
-"# arm constants \n"
-"uint8 ARMED = 1\n"
-"uint8 DISARMED = 0\n"
-"# gear constants\n"
-"uint8 GEAR_UP\n"
-"uint8 GEAR_DOWN\n"
-"#variables\n"
-"uint8 authority\n"
-"uint8 armed\n"
-"uint8 gear\n"
-"uint16 voltage	#volt*100\n"
-"time changeTime	 #time of last authority change\n"
-;
+    return "uint8 CONTROL_BY_RC = 1\n\
+uint8 CONTROL_BY_MOBILE = 2\n\
+uint8 CONTROL_BY_SDK = 3\n\
+\n\
+uint8 ARMED = 1\n\
+uint8 DISARMED = 0\n\
+\n\
+uint8 GEAR_UP\n\
+uint8 GEAR_DOWN\n\
+\n\
+uint8 authority\n\
+uint8 armed\n\
+uint8 gear\n\
+uint16 voltage	#volt*100\n\
+time changeTime	 #time of last authority change\n\
+";
   }
 
   static const char* value(const ::juk_msg::juk_dji_device_status_msg_<ContainerAllocator>&) { return value(); }

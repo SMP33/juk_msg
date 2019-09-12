@@ -116,7 +116,7 @@ namespace message_traits
 
 
 // BOOLTRAITS {'IsFixedSize': True, 'IsMessage': True, 'HasHeader': False}
-// {'juk_msg': ['/home/ubuntu/catkin_ws/src/juk-msg/msg'], 'std_msgs': ['/opt/ros/melodic/share/std_msgs/cmake/../msg']}
+// {'juk_msg': ['/home/pi/catkin_ws/src/juk_msg/msg'], 'std_msgs': ['/opt/ros/kinetic/share/std_msgs/cmake/../msg']}
 
 // !!!!!!!!!!! ['__class__', '__delattr__', '__dict__', '__doc__', '__eq__', '__format__', '__getattribute__', '__hash__', '__init__', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', '_parsed_fields', 'constants', 'fields', 'full_name', 'has_header', 'header_present', 'names', 'package', 'parsed_fields', 'short_name', 'text', 'types']
 
@@ -159,12 +159,12 @@ struct MD5Sum< ::juk_msg::juk_dji_gps_msg_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "950d0cbc9af0e57ee3f886e182d06a6e";
+    return "05d6c8d274376ad1a4a4b1de974cccfc";
   }
 
   static const char* value(const ::juk_msg::juk_dji_gps_msg_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0x950d0cbc9af0e57eULL;
-  static const uint64_t static_value2 = 0xe3f886e182d06a6eULL;
+  static const uint64_t static_value1 = 0x05d6c8d274376ad1ULL;
+  static const uint64_t static_value2 = 0xa4a4b1de974cccfcULL;
 };
 
 template<class ContainerAllocator>
@@ -183,17 +183,17 @@ struct Definition< ::juk_msg::juk_dji_gps_msg_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "float64 lat	#rads\n"
-"float64 lng	#rads\n"
-"float64 alt	#meters\n"
-"float64 vx	#meters/sec\n"
-"float64 vy	#meters/sec\n"
-"float64 vz	#meters/sec\n"
-"float64 course   #rads\n"
-"uint8 satellites\n"
-"uint8 quality\n"
-"time time\n"
-;
+    return "float64 lat	#rads\n\
+float64 lng	#rads\n\
+float64 alt	#meters\n\
+float64 vx	#meters/sec\n\
+float64 vy	#meters/sec\n\
+float64 vz	#meters/sec\n\
+float64 course   #rads\n\
+uint8 satellites\n\
+uint8 quality\n\
+time time\n\
+";
   }
 
   static const char* value(const ::juk_msg::juk_dji_gps_msg_<ContainerAllocator>&) { return value(); }
