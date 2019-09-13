@@ -24,7 +24,8 @@ struct juk_dji_gps_msg_
   typedef juk_dji_gps_msg_<ContainerAllocator> Type;
 
   juk_dji_gps_msg_()
-    : lat(0.0)
+    : flight_status(0)
+    , lat(0.0)
     , lng(0.0)
     , alt(0.0)
     , vx(0.0)
@@ -36,7 +37,8 @@ struct juk_dji_gps_msg_
     , time()  {
     }
   juk_dji_gps_msg_(const ContainerAllocator& _alloc)
-    : lat(0.0)
+    : flight_status(0)
+    , lat(0.0)
     , lng(0.0)
     , alt(0.0)
     , vx(0.0)
@@ -50,6 +52,9 @@ struct juk_dji_gps_msg_
     }
 
 
+
+   typedef uint8_t _flight_status_type;
+  _flight_status_type flight_status;
 
    typedef double _lat_type;
   _lat_type lat;
@@ -83,6 +88,13 @@ struct juk_dji_gps_msg_
 
 
 
+  enum {
+    ON_GROUND_STANDBY = 1u,
+    TAKEOFF = 2u,
+    IN_AIR_STANDBY = 3u,
+    LANDING = 4u,
+    FINISHING_LANDING = 5u,
+  };
 
 
   typedef boost::shared_ptr< ::juk_msg::juk_dji_gps_msg_<ContainerAllocator> > Ptr;
@@ -96,6 +108,16 @@ typedef boost::shared_ptr< ::juk_msg::juk_dji_gps_msg > juk_dji_gps_msgPtr;
 typedef boost::shared_ptr< ::juk_msg::juk_dji_gps_msg const> juk_dji_gps_msgConstPtr;
 
 // constants requiring out of line definition
+
+   
+
+   
+
+   
+
+   
+
+   
 
 
 
@@ -159,12 +181,12 @@ struct MD5Sum< ::juk_msg::juk_dji_gps_msg_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "05d6c8d274376ad1a4a4b1de974cccfc";
+    return "54b870a4fbe1e849665c19a3f5475e59";
   }
 
   static const char* value(const ::juk_msg::juk_dji_gps_msg_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0x05d6c8d274376ad1ULL;
-  static const uint64_t static_value2 = 0xa4a4b1de974cccfcULL;
+  static const uint64_t static_value1 = 0x54b870a4fbe1e849ULL;
+  static const uint64_t static_value2 = 0x665c19a3f5475e59ULL;
 };
 
 template<class ContainerAllocator>
@@ -183,7 +205,15 @@ struct Definition< ::juk_msg::juk_dji_gps_msg_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "float64 lat	#rads\n\
+    return "uint8 ON_GROUND_STANDBY = 1\n\
+uint8 TAKEOFF = 2\n\
+uint8 IN_AIR_STANDBY = 3\n\
+uint8 LANDING = 4\n\
+uint8 FINISHING_LANDING = 5\n\
+\n\
+uint8 flight_status\n\
+\n\
+float64 lat	#rads\n\
 float64 lng	#rads\n\
 float64 alt	#meters\n\
 float64 vx	#meters/sec\n\
@@ -211,6 +241,7 @@ namespace serialization
   {
     template<typename Stream, typename T> inline static void allInOne(Stream& stream, T m)
     {
+      stream.next(m.flight_status);
       stream.next(m.lat);
       stream.next(m.lng);
       stream.next(m.alt);
@@ -239,6 +270,8 @@ struct Printer< ::juk_msg::juk_dji_gps_msg_<ContainerAllocator> >
 {
   template<typename Stream> static void stream(Stream& s, const std::string& indent, const ::juk_msg::juk_dji_gps_msg_<ContainerAllocator>& v)
   {
+    s << indent << "flight_status: ";
+    Printer<uint8_t>::stream(s, indent + "  ", v.flight_status);
     s << indent << "lat: ";
     Printer<double>::stream(s, indent + "  ", v.lat);
     s << indent << "lng: ";
