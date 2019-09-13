@@ -29,6 +29,7 @@ struct juk_dji_device_status_msg_
     , authority(0)
     , armed(0)
     , gear(0)
+    , flight_status(0)
     , voltage(0)
     , changeTime()  {
     }
@@ -38,6 +39,7 @@ struct juk_dji_device_status_msg_
     , authority(0)
     , armed(0)
     , gear(0)
+    , flight_status(0)
     , voltage(0)
     , changeTime()  {
   (void)_alloc;
@@ -60,6 +62,9 @@ struct juk_dji_device_status_msg_
    typedef uint8_t _gear_type;
   _gear_type gear;
 
+   typedef uint8_t _flight_status_type;
+  _flight_status_type flight_status;
+
    typedef uint16_t _voltage_type;
   _voltage_type voltage;
 
@@ -74,6 +79,11 @@ struct juk_dji_device_status_msg_
     CONTROL_BY_SDK = 3u,
     ARMED = 1u,
     DISARMED = 0u,
+    ON_GROUND_STANDBY = 1u,
+    TAKEOFF = 2u,
+    IN_AIR_STANDBY = 3u,
+    LANDING = 4u,
+    FINISHING_LANDING = 5u,
   };
 
 
@@ -88,6 +98,16 @@ typedef boost::shared_ptr< ::juk_msg::juk_dji_device_status_msg > juk_dji_device
 typedef boost::shared_ptr< ::juk_msg::juk_dji_device_status_msg const> juk_dji_device_status_msgConstPtr;
 
 // constants requiring out of line definition
+
+   
+
+   
+
+   
+
+   
+
+   
 
    
 
@@ -161,12 +181,12 @@ struct MD5Sum< ::juk_msg::juk_dji_device_status_msg_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "c01008716f18541d0f9ef5f50408bce9";
+    return "8f5f06acb64e8767997bfe75ae10e15b";
   }
 
   static const char* value(const ::juk_msg::juk_dji_device_status_msg_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0xc01008716f18541dULL;
-  static const uint64_t static_value2 = 0x0f9ef5f50408bce9ULL;
+  static const uint64_t static_value1 = 0x8f5f06acb64e8767ULL;
+  static const uint64_t static_value2 = 0x997bfe75ae10e15bULL;
 };
 
 template<class ContainerAllocator>
@@ -195,9 +215,16 @@ uint8 DISARMED = 0\n\
 uint8 GEAR_UP\n\
 uint8 GEAR_DOWN\n\
 \n\
+uint8 ON_GROUND_STANDBY = 1\n\
+uint8 TAKEOFF = 2\n\
+uint8 IN_AIR_STANDBY = 3\n\
+uint8 LANDING = 4\n\
+uint8 FINISHING_LANDING = 5\n\
+\n\
 uint8 authority\n\
 uint8 armed\n\
 uint8 gear\n\
+uint8 flight_status\n\
 uint16 voltage	#volt*100\n\
 time changeTime	 #time of last authority change\n\
 ";
@@ -223,6 +250,7 @@ namespace serialization
       stream.next(m.authority);
       stream.next(m.armed);
       stream.next(m.gear);
+      stream.next(m.flight_status);
       stream.next(m.voltage);
       stream.next(m.changeTime);
     }
@@ -253,6 +281,8 @@ struct Printer< ::juk_msg::juk_dji_device_status_msg_<ContainerAllocator> >
     Printer<uint8_t>::stream(s, indent + "  ", v.armed);
     s << indent << "gear: ";
     Printer<uint8_t>::stream(s, indent + "  ", v.gear);
+    s << indent << "flight_status: ";
+    Printer<uint8_t>::stream(s, indent + "  ", v.flight_status);
     s << indent << "voltage: ";
     Printer<uint16_t>::stream(s, indent + "  ", v.voltage);
     s << indent << "changeTime: ";
