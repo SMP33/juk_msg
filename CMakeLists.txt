@@ -1,5 +1,7 @@
 install( FILES 
 
+juk_aruco_module_action.h
+juk_aruco_module_data.h
 juk_control_dji_msg.h
 juk_dji_camera_control_msg.h
 juk_dji_device_status_msg.h

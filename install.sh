@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-files=`ls | grep _msg.h`
+files=`ls | grep '\.h'`
 echo $files  
 
 if   test CMakeLists.txt  
