@@ -24,37 +24,44 @@ struct juk_dji_gps_msg_
   typedef juk_dji_gps_msg_<ContainerAllocator> Type;
 
   juk_dji_gps_msg_()
-    : flight_status(0)
-    , lat(0.0)
+    : lat(0.0)
     , lng(0.0)
     , alt(0.0)
     , vx(0.0)
     , vy(0.0)
     , vz(0.0)
     , course(0.0)
+    , q0(0.0)
+    , q1(0.0)
+    , q2(0.0)
+    , q3(0.0)
     , satellites(0)
     , quality(0)
-    , time()  {
+    , time()
+    , flight_status(0)
+    , deb()  {
     }
   juk_dji_gps_msg_(const ContainerAllocator& _alloc)
-    : flight_status(0)
-    , lat(0.0)
+    : lat(0.0)
     , lng(0.0)
     , alt(0.0)
     , vx(0.0)
     , vy(0.0)
     , vz(0.0)
     , course(0.0)
+    , q0(0.0)
+    , q1(0.0)
+    , q2(0.0)
+    , q3(0.0)
     , satellites(0)
     , quality(0)
-    , time()  {
+    , time()
+    , flight_status(0)
+    , deb(_alloc)  {
   (void)_alloc;
     }
 
 
-
-   typedef uint8_t _flight_status_type;
-  _flight_status_type flight_status;
 
    typedef double _lat_type;
   _lat_type lat;
@@ -77,6 +84,18 @@ struct juk_dji_gps_msg_
    typedef double _course_type;
   _course_type course;
 
+   typedef double _q0_type;
+  _q0_type q0;
+
+   typedef double _q1_type;
+  _q1_type q1;
+
+   typedef double _q2_type;
+  _q2_type q2;
+
+   typedef double _q3_type;
+  _q3_type q3;
+
    typedef uint8_t _satellites_type;
   _satellites_type satellites;
 
@@ -86,15 +105,14 @@ struct juk_dji_gps_msg_
    typedef ros::Time _time_type;
   _time_type time;
 
+   typedef uint8_t _flight_status_type;
+  _flight_status_type flight_status;
+
+   typedef std::basic_string<char, std::char_traits<char>, typename ContainerAllocator::template rebind<char>::other >  _deb_type;
+  _deb_type deb;
 
 
-  enum {
-    ON_GROUND_STANDBY = 1u,
-    TAKEOFF = 2u,
-    IN_AIR_STANDBY = 3u,
-    LANDING = 4u,
-    FINISHING_LANDING = 5u,
-  };
+
 
 
   typedef boost::shared_ptr< ::juk_msg::juk_dji_gps_msg_<ContainerAllocator> > Ptr;
@@ -108,16 +126,6 @@ typedef boost::shared_ptr< ::juk_msg::juk_dji_gps_msg > juk_dji_gps_msgPtr;
 typedef boost::shared_ptr< ::juk_msg::juk_dji_gps_msg const> juk_dji_gps_msgConstPtr;
 
 // constants requiring out of line definition
-
-   
-
-   
-
-   
-
-   
-
-   
 
 
 
@@ -137,7 +145,7 @@ namespace message_traits
 
 
 
-// BOOLTRAITS {'IsFixedSize': True, 'IsMessage': True, 'HasHeader': False}
+// BOOLTRAITS {'IsFixedSize': False, 'IsMessage': True, 'HasHeader': False}
 // {'juk_msg': ['/home/pi/catkin_ws/src/juk_msg/msg'], 'std_msgs': ['/opt/ros/kinetic/share/std_msgs/cmake/../msg']}
 
 // !!!!!!!!!!! ['__class__', '__delattr__', '__dict__', '__doc__', '__eq__', '__format__', '__getattribute__', '__hash__', '__init__', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', '_parsed_fields', 'constants', 'fields', 'full_name', 'has_header', 'header_present', 'names', 'package', 'parsed_fields', 'short_name', 'text', 'types']
@@ -147,12 +155,12 @@ namespace message_traits
 
 template <class ContainerAllocator>
 struct IsFixedSize< ::juk_msg::juk_dji_gps_msg_<ContainerAllocator> >
-  : TrueType
+  : FalseType
   { };
 
 template <class ContainerAllocator>
 struct IsFixedSize< ::juk_msg::juk_dji_gps_msg_<ContainerAllocator> const>
-  : TrueType
+  : FalseType
   { };
 
 template <class ContainerAllocator>
@@ -181,12 +189,12 @@ struct MD5Sum< ::juk_msg::juk_dji_gps_msg_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "54b870a4fbe1e849665c19a3f5475e59";
+    return "2d582b47dfa38a609cd1a4d19afdf64e";
   }
 
   static const char* value(const ::juk_msg::juk_dji_gps_msg_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0x54b870a4fbe1e849ULL;
-  static const uint64_t static_value2 = 0x665c19a3f5475e59ULL;
+  static const uint64_t static_value1 = 0x2d582b47dfa38a60ULL;
+  static const uint64_t static_value2 = 0x9cd1a4d19afdf64eULL;
 };
 
 template<class ContainerAllocator>
@@ -205,24 +213,24 @@ struct Definition< ::juk_msg::juk_dji_gps_msg_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "uint8 ON_GROUND_STANDBY = 1\n\
-uint8 TAKEOFF = 2\n\
-uint8 IN_AIR_STANDBY = 3\n\
-uint8 LANDING = 4\n\
-uint8 FINISHING_LANDING = 5\n\
-\n\
-uint8 flight_status\n\
-\n\
-float64 lat	#rads\n\
+    return "float64 lat	#rads\n\
 float64 lng	#rads\n\
 float64 alt	#meters\n\
 float64 vx	#meters/sec\n\
 float64 vy	#meters/sec\n\
 float64 vz	#meters/sec\n\
 float64 course   #rads\n\
+float64 q0\n\
+float64 q1\n\
+float64 q2\n\
+float64 q3\n\
+\n\
 uint8 satellites\n\
 uint8 quality\n\
 time time\n\
+uint8 flight_status\n\
+\n\
+string deb\n\
 ";
   }
 
@@ -241,7 +249,6 @@ namespace serialization
   {
     template<typename Stream, typename T> inline static void allInOne(Stream& stream, T m)
     {
-      stream.next(m.flight_status);
       stream.next(m.lat);
       stream.next(m.lng);
       stream.next(m.alt);
@@ -249,9 +256,15 @@ namespace serialization
       stream.next(m.vy);
       stream.next(m.vz);
       stream.next(m.course);
+      stream.next(m.q0);
+      stream.next(m.q1);
+      stream.next(m.q2);
+      stream.next(m.q3);
       stream.next(m.satellites);
       stream.next(m.quality);
       stream.next(m.time);
+      stream.next(m.flight_status);
+      stream.next(m.deb);
     }
 
     ROS_DECLARE_ALLINONE_SERIALIZER
@@ -270,8 +283,6 @@ struct Printer< ::juk_msg::juk_dji_gps_msg_<ContainerAllocator> >
 {
   template<typename Stream> static void stream(Stream& s, const std::string& indent, const ::juk_msg::juk_dji_gps_msg_<ContainerAllocator>& v)
   {
-    s << indent << "flight_status: ";
-    Printer<uint8_t>::stream(s, indent + "  ", v.flight_status);
     s << indent << "lat: ";
     Printer<double>::stream(s, indent + "  ", v.lat);
     s << indent << "lng: ";
@@ -286,12 +297,24 @@ struct Printer< ::juk_msg::juk_dji_gps_msg_<ContainerAllocator> >
     Printer<double>::stream(s, indent + "  ", v.vz);
     s << indent << "course: ";
     Printer<double>::stream(s, indent + "  ", v.course);
+    s << indent << "q0: ";
+    Printer<double>::stream(s, indent + "  ", v.q0);
+    s << indent << "q1: ";
+    Printer<double>::stream(s, indent + "  ", v.q1);
+    s << indent << "q2: ";
+    Printer<double>::stream(s, indent + "  ", v.q2);
+    s << indent << "q3: ";
+    Printer<double>::stream(s, indent + "  ", v.q3);
     s << indent << "satellites: ";
     Printer<uint8_t>::stream(s, indent + "  ", v.satellites);
     s << indent << "quality: ";
     Printer<uint8_t>::stream(s, indent + "  ", v.quality);
     s << indent << "time: ";
     Printer<ros::Time>::stream(s, indent + "  ", v.time);
+    s << indent << "flight_status: ";
+    Printer<uint8_t>::stream(s, indent + "  ", v.flight_status);
+    s << indent << "deb: ";
+    Printer<std::basic_string<char, std::char_traits<char>, typename ContainerAllocator::template rebind<char>::other > >::stream(s, indent + "  ", v.deb);
   }
 };
 

@@ -40,6 +40,8 @@ struct juk_navigation_actions_msg_
 
   enum {
     set_homepoint = 1u,
+    pause = 2u,
+    unpause = 3u,
   };
 
 
@@ -54,6 +56,10 @@ typedef boost::shared_ptr< ::juk_msg::juk_navigation_actions_msg > juk_navigatio
 typedef boost::shared_ptr< ::juk_msg::juk_navigation_actions_msg const> juk_navigation_actions_msgConstPtr;
 
 // constants requiring out of line definition
+
+   
+
+   
 
    
 
@@ -119,12 +125,12 @@ struct MD5Sum< ::juk_msg::juk_navigation_actions_msg_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "85ebe9017c2b9188c4ee4d86d310b1bd";
+    return "864606fcd57905c7c1b70032e1e0a419";
   }
 
   static const char* value(const ::juk_msg::juk_navigation_actions_msg_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0x85ebe9017c2b9188ULL;
-  static const uint64_t static_value2 = 0xc4ee4d86d310b1bdULL;
+  static const uint64_t static_value1 = 0x864606fcd57905c7ULL;
+  static const uint64_t static_value2 = 0xc1b70032e1e0a419ULL;
 };
 
 template<class ContainerAllocator>
@@ -144,6 +150,9 @@ struct Definition< ::juk_msg::juk_navigation_actions_msg_<ContainerAllocator> >
   static const char* value()
   {
     return "uint8 set_homepoint=1\n\
+uint8 pause=2\n\
+uint8 unpause=3\n\
+\n\
 uint8 action\n\
 ";
   }

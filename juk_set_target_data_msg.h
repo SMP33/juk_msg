@@ -31,6 +31,7 @@ struct juk_set_target_data_msg_
     , data_y(0.0)
     , data_z(0.0)
     , speed(0.0)
+    , course_mode(0)
     , course(0.0)
     , acc(0.0)  {
     }
@@ -42,6 +43,7 @@ struct juk_set_target_data_msg_
     , data_y(0.0)
     , data_z(0.0)
     , speed(0.0)
+    , course_mode(0)
     , course(0.0)
     , acc(0.0)  {
   (void)_alloc;
@@ -70,6 +72,9 @@ struct juk_set_target_data_msg_
    typedef double _speed_type;
   _speed_type speed;
 
+   typedef uint8_t _course_mode_type;
+  _course_mode_type course_mode;
+
    typedef double _course_type;
   _course_type course;
 
@@ -83,12 +88,16 @@ struct juk_set_target_data_msg_
     system_home = 2u,
     system_base = 3u,
     system_offset_from_target = 4u,
+    system_offset_from_here = 5u,
+    course_abs = 0u,
+    course_from_move_dir = 1u,
+    course_add = 2u,
     mode_allow_break_distance = 0u,
     mode_not_break_distance = 1u,
     fly_simple = 1u,
-    fly_safe = 1u,
-    landing_simple = 1u,
-    landing_aruco = 1u,
+    fly_safe = 2u,
+    landing_simple = 3u,
+    landing_aruco = 4u,
   };
 
 
@@ -103,6 +112,14 @@ typedef boost::shared_ptr< ::juk_msg::juk_set_target_data_msg > juk_set_target_d
 typedef boost::shared_ptr< ::juk_msg::juk_set_target_data_msg const> juk_set_target_data_msgConstPtr;
 
 // constants requiring out of line definition
+
+   
+
+   
+
+   
+
+   
 
    
 
@@ -186,12 +203,12 @@ struct MD5Sum< ::juk_msg::juk_set_target_data_msg_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "8b1c0f84f288b0ee8306c344df24bef2";
+    return "614e7644654a2ffcad33be3bc4597160";
   }
 
   static const char* value(const ::juk_msg::juk_set_target_data_msg_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0x8b1c0f84f288b0eeULL;
-  static const uint64_t static_value2 = 0x8306c344df24bef2ULL;
+  static const uint64_t static_value1 = 0x614e7644654a2ffcULL;
+  static const uint64_t static_value2 = 0xad33be3bc4597160ULL;
 };
 
 template<class ContainerAllocator>
@@ -214,14 +231,19 @@ struct Definition< ::juk_msg::juk_set_target_data_msg_<ContainerAllocator> >
 uint8 system_home = 2\n\
 uint8 system_base = 3\n\
 uint8 system_offset_from_target  = 4\n\
+uint8 system_offset_from_here  = 5\n\
+\n\
+uint8 course_abs=0\n\
+uint8 course_from_move_dir=1\n\
+uint8 course_add=2\n\
 \n\
 uint8 mode_allow_break_distance = 0\n\
 uint8 mode_not_break_distance = 1\n\
 \n\
 uint8 fly_simple=1\n\
-uint8 fly_safe=1\n\
-uint8 landing_simple=1\n\
-uint8 landing_aruco=1\n\
+uint8 fly_safe=2\n\
+uint8 landing_simple=3\n\
+uint8 landing_aruco=4\n\
 \n\
 uint8 fly_mode\n\
 \n\
@@ -234,8 +256,8 @@ float64 data_z\n\
 \n\
 float64 speed\n\
 \n\
+uint8 course_mode\n\
 float64 course\n\
-\n\
 float64 acc\n\
 ";
   }
@@ -262,6 +284,7 @@ namespace serialization
       stream.next(m.data_y);
       stream.next(m.data_z);
       stream.next(m.speed);
+      stream.next(m.course_mode);
       stream.next(m.course);
       stream.next(m.acc);
     }
@@ -296,6 +319,8 @@ struct Printer< ::juk_msg::juk_set_target_data_msg_<ContainerAllocator> >
     Printer<double>::stream(s, indent + "  ", v.data_z);
     s << indent << "speed: ";
     Printer<double>::stream(s, indent + "  ", v.speed);
+    s << indent << "course_mode: ";
+    Printer<uint8_t>::stream(s, indent + "  ", v.course_mode);
     s << indent << "course: ";
     Printer<double>::stream(s, indent + "  ", v.course);
     s << indent << "acc: ";

@@ -32,7 +32,9 @@ struct juk_position_data_msg_
     , z(0.0)
     , course(0.0)
     , dist_to_target(0.0)
-    , stable_time(0.0)  {
+    , stable_time(0.0)
+    , debug()
+    , paused(0)  {
     }
   juk_position_data_msg_(const ContainerAllocator& _alloc)
     : lat(0.0)
@@ -43,7 +45,9 @@ struct juk_position_data_msg_
     , z(0.0)
     , course(0.0)
     , dist_to_target(0.0)
-    , stable_time(0.0)  {
+    , stable_time(0.0)
+    , debug(_alloc)
+    , paused(0)  {
   (void)_alloc;
     }
 
@@ -75,6 +79,12 @@ struct juk_position_data_msg_
 
    typedef double _stable_time_type;
   _stable_time_type stable_time;
+
+   typedef std::basic_string<char, std::char_traits<char>, typename ContainerAllocator::template rebind<char>::other >  _debug_type;
+  _debug_type debug;
+
+   typedef uint8_t _paused_type;
+  _paused_type paused;
 
 
 
@@ -110,8 +120,8 @@ namespace message_traits
 
 
 
-// BOOLTRAITS {'IsFixedSize': True, 'IsMessage': True, 'HasHeader': False}
-// {'juk_msg': ['/home/ubuntu/catkin_ws/src/juk-msg/msg'], 'std_msgs': ['/opt/ros/melodic/share/std_msgs/cmake/../msg']}
+// BOOLTRAITS {'IsFixedSize': False, 'IsMessage': True, 'HasHeader': False}
+// {'juk_msg': ['/home/pi/catkin_ws/src/juk_msg/msg'], 'std_msgs': ['/opt/ros/kinetic/share/std_msgs/cmake/../msg']}
 
 // !!!!!!!!!!! ['__class__', '__delattr__', '__dict__', '__doc__', '__eq__', '__format__', '__getattribute__', '__hash__', '__init__', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', '_parsed_fields', 'constants', 'fields', 'full_name', 'has_header', 'header_present', 'names', 'package', 'parsed_fields', 'short_name', 'text', 'types']
 
@@ -120,12 +130,12 @@ namespace message_traits
 
 template <class ContainerAllocator>
 struct IsFixedSize< ::juk_msg::juk_position_data_msg_<ContainerAllocator> >
-  : TrueType
+  : FalseType
   { };
 
 template <class ContainerAllocator>
 struct IsFixedSize< ::juk_msg::juk_position_data_msg_<ContainerAllocator> const>
-  : TrueType
+  : FalseType
   { };
 
 template <class ContainerAllocator>
@@ -154,12 +164,12 @@ struct MD5Sum< ::juk_msg::juk_position_data_msg_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "4fb0457d75376c9f81ea852d5e1a56b8";
+    return "fd14a106d7e70a5aadeb3092396dd421";
   }
 
   static const char* value(const ::juk_msg::juk_position_data_msg_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0x4fb0457d75376c9fULL;
-  static const uint64_t static_value2 = 0x81ea852d5e1a56b8ULL;
+  static const uint64_t static_value1 = 0xfd14a106d7e70a5aULL;
+  static const uint64_t static_value2 = 0xadeb3092396dd421ULL;
 };
 
 template<class ContainerAllocator>
@@ -178,16 +188,18 @@ struct Definition< ::juk_msg::juk_position_data_msg_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "float64 lat\n"
-"float64 lng\n"
-"float64 alt\n"
-"float64 x\n"
-"float64 y\n"
-"float64 z\n"
-"float64 course\n"
-"float64 dist_to_target\n"
-"float64 stable_time\n"
-;
+    return "float64 lat\n\
+float64 lng\n\
+float64 alt\n\
+float64 x\n\
+float64 y\n\
+float64 z\n\
+float64 course\n\
+float64 dist_to_target\n\
+float64 stable_time\n\
+string debug\n\
+uint8 paused\n\
+";
   }
 
   static const char* value(const ::juk_msg::juk_position_data_msg_<ContainerAllocator>&) { return value(); }
@@ -214,6 +226,8 @@ namespace serialization
       stream.next(m.course);
       stream.next(m.dist_to_target);
       stream.next(m.stable_time);
+      stream.next(m.debug);
+      stream.next(m.paused);
     }
 
     ROS_DECLARE_ALLINONE_SERIALIZER
@@ -250,6 +264,10 @@ struct Printer< ::juk_msg::juk_position_data_msg_<ContainerAllocator> >
     Printer<double>::stream(s, indent + "  ", v.dist_to_target);
     s << indent << "stable_time: ";
     Printer<double>::stream(s, indent + "  ", v.stable_time);
+    s << indent << "debug: ";
+    Printer<std::basic_string<char, std::char_traits<char>, typename ContainerAllocator::template rebind<char>::other > >::stream(s, indent + "  ", v.debug);
+    s << indent << "paused: ";
+    Printer<uint8_t>::stream(s, indent + "  ", v.paused);
   }
 };
 

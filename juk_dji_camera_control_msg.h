@@ -170,7 +170,7 @@ uint8 stop_video=3\n\
 \n\
 int16 yaw      #deg * 0.1\n\
 int16 pitch    #deg * 0.1\n\
-int16 roll     #deg * 0.1\n\
+int16 roll       #deg * 0.1\n\
 \n\
 uint8 action\n\
 ";

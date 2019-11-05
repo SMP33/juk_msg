@@ -74,6 +74,11 @@ struct juk_dji_device_status_msg_
     CONTROL_BY_SDK = 3u,
     ARMED = 1u,
     DISARMED = 0u,
+    ON_GROUND_STANDBY = 1u,
+    TAKEOFF = 2u,
+    IN_AIR_STANDBY = 3u,
+    LANDING = 4u,
+    FINISHING_LANDING = 5u,
   };
 
 
@@ -88,6 +93,16 @@ typedef boost::shared_ptr< ::juk_msg::juk_dji_device_status_msg > juk_dji_device
 typedef boost::shared_ptr< ::juk_msg::juk_dji_device_status_msg const> juk_dji_device_status_msgConstPtr;
 
 // constants requiring out of line definition
+
+   
+
+   
+
+   
+
+   
+
+   
 
    
 
@@ -161,12 +176,12 @@ struct MD5Sum< ::juk_msg::juk_dji_device_status_msg_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "c01008716f18541d0f9ef5f50408bce9";
+    return "58c1cac6523b0200d80e49c2b266a5bc";
   }
 
   static const char* value(const ::juk_msg::juk_dji_device_status_msg_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0xc01008716f18541dULL;
-  static const uint64_t static_value2 = 0x0f9ef5f50408bce9ULL;
+  static const uint64_t static_value1 = 0x58c1cac6523b0200ULL;
+  static const uint64_t static_value2 = 0xd80e49c2b266a5bcULL;
 };
 
 template<class ContainerAllocator>
@@ -194,6 +209,12 @@ uint8 DISARMED = 0\n\
 \n\
 uint8 GEAR_UP\n\
 uint8 GEAR_DOWN\n\
+\n\
+uint8 ON_GROUND_STANDBY = 1\n\
+uint8 TAKEOFF = 2\n\
+uint8 IN_AIR_STANDBY = 3\n\
+uint8 LANDING = 4\n\
+uint8 FINISHING_LANDING = 5\n\
 \n\
 uint8 authority\n\
 uint8 armed\n\

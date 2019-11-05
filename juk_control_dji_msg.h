@@ -102,7 +102,7 @@ namespace message_traits
 
 
 // BOOLTRAITS {'IsFixedSize': True, 'IsMessage': True, 'HasHeader': False}
-// {'juk_msg': ['/home/ubuntu/catkin_ws/src/juk-msg/msg'], 'std_msgs': ['/opt/ros/melodic/share/std_msgs/cmake/../msg']}
+// {'juk_msg': ['/home/pi/catkin_ws/src/juk_msg/msg'], 'std_msgs': ['/opt/ros/kinetic/share/std_msgs/cmake/../msg']}
 
 // !!!!!!!!!!! ['__class__', '__delattr__', '__dict__', '__doc__', '__eq__', '__format__', '__getattribute__', '__hash__', '__init__', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', '_parsed_fields', 'constants', 'fields', 'full_name', 'has_header', 'header_present', 'names', 'package', 'parsed_fields', 'short_name', 'text', 'types']
 
@@ -145,12 +145,12 @@ struct MD5Sum< ::juk_msg::juk_control_dji_msg_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "2d5b918a83dd8bc62e562f57e48e333b";
+    return "644ab8162098e953259f3fb002bde051";
   }
 
   static const char* value(const ::juk_msg::juk_control_dji_msg_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0x2d5b918a83dd8bc6ULL;
-  static const uint64_t static_value2 = 0x2e562f57e48e333bULL;
+  static const uint64_t static_value1 = 0x644ab8162098e953ULL;
+  static const uint64_t static_value2 = 0x259f3fb002bde051ULL;
 };
 
 template<class ContainerAllocator>
@@ -169,16 +169,16 @@ struct Definition< ::juk_msg::juk_control_dji_msg_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "uint8 flag_velocity = 5\n"
-"uint8 flag_angles = 2\n"
-"uint8 flag_break = 13\n"
-"\n"
-"uint8 flag\n"
-"float64 data_x\n"
-"float64 data_y\n"
-"float64 data_z\n"
-"float64 course\n"
-;
+    return "uint8 flag_velocity = 5\n\
+uint8 flag_angles = 2\n\
+uint8 flag_break = 13\n\
+\n\
+uint8 flag\n\
+float64 data_x\n\
+float64 data_y\n\
+float64 data_z\n\
+float64 course\n\
+";
   }
 
   static const char* value(const ::juk_msg::juk_control_dji_msg_<ContainerAllocator>&) { return value(); }
